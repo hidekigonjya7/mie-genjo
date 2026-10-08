@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>三重現状回復サービス</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Zen+Antique+Soft&display=swap">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+[hidden]{display:none!important}
+/* Layout: 一枚の縦長ページ。上部に屋号と電話、次に対応工事、料金目安、流れ、会社概要、問い合わせ。 */
+:root{
+  --bg:#f6f7f4;          /* 新しい壁紙のような明るい白 */
+  --surface:#ffffff;
+  --ink:#1d2a2a;         /* 深い墨緑 */
+  --muted:#5b6866;
+  --line:#d9dfdb;
+  --accent:#2f6b4f;      /* 畳の青々とした緑 */
+  --accent-soft:#e3eee7;
+  --warm:#b9772f;        /* 木の床の色 */
+  --on-accent:#ffffff;
+  --font-display:"Zen Antique Soft","Hiragino Mincho ProN","Yu Mincho",serif;
+  --font-body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141a19;--surface:#1c2423;--ink:#e8eeeb;--muted:#a3b0ac;--line:#2f3a38;
+  --accent:#7cc3a0;--accent-soft:#22332c;--warm:#e0a868;--on-accent:#10201a;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141a19;--surface:#1c2423;--ink:#e8eeeb;--muted:#a3b0ac;--line:#2f3a38;
+  --accent:#7cc3a0;--accent-soft:#22332c;--warm:#e0a868;--on-accent:#10201a;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.8;margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.35}
+h2{font-family:var(--font-display);font-weight:400;font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing:.04em}
+.eyebrow{font-size:.78rem;letter-spacing:.18em;color:var(--accent);font-weight:700}
+section{padding-block:64px;border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:6px;margin-bottom:32px}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px;flex-wrap:wrap}
+.brand{font-family:var(--font-display);font-size:1.25rem;letter-spacing:.06em}
+.top nav{display:flex;gap:18px;font-size:.9rem;flex-wrap:wrap}
+.top nav a{color:var(--muted);text-decoration:none}
+.top nav a:hover,.top nav a:focus-visible{color:var(--accent)}
+
+/* hero */
+.hero{padding-block:72px 64px}
+.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.hero h1{font-family:var(--font-display);font-weight:400;font-size:clamp(2.3rem,6vw,3.9rem);letter-spacing:.05em}
+.hero h1 small{display:block;font-family:var(--font-body);font-size:.95rem;font-weight:700;letter-spacing:.2em;color:var(--accent);margin-bottom:12px}
+.hero .lead{font-size:1.15rem;margin:22px 0 0;max-width:30em}
+.hero .lead strong{background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;padding:0;list-style:none}
+.tags li{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:3px 14px;font-size:.88rem}
+.call{background:var(--accent);color:var(--on-accent);border-radius:14px;padding:28px;display:grid;gap:10px}
+.call .label{font-size:.85rem;letter-spacing:.12em;opacity:.9}
+.call .tel{font-size:clamp(1.8rem,4.6vw,2.4rem);font-weight:900;letter-spacing:.04em;font-variant-numeric:tabular-nums;color:inherit;text-decoration:none;user-select:all}
+.call .sub{font-size:.9rem;opacity:.92;line-height:1.6}
+.call button{justify-self:start;font:inherit;font-size:.85rem;border:1px solid currentColor;background:transparent;color:inherit;border-radius:8px;padding:4px 12px;cursor:pointer}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.svc{background:var(--surface);padding:26px 24px;display:grid;gap:8px;align-content:start}
+.svc h3{font-size:1.12rem;display:flex;align-items:center;gap:10px}
+.svc h3 svg{flex:none;width:26px;height:26px;stroke:var(--accent);fill:none;stroke-width:1.6}
+.svc p{margin:0;color:var(--muted);font-size:.95rem}
+.allround{margin-top:28px;font-size:1.05rem;padding-left:16px;border-left:3px solid var(--warm)}
+
+/* price */
+.price-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:28px}
+.p-item{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:20px 22px}
+.p-item .name{font-weight:700}
+.p-item .yen{font-size:1.7rem;font-weight:900;font-variant-numeric:tabular-nums;color:var(--accent)}
+.p-item .yen small{font-size:.9rem;font-weight:500;color:var(--muted)}
+.table-box{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:440px;font-variant-numeric:tabular-nums}
+caption{text-align:left;padding:16px 18px 6px;font-weight:700}
+th,td{padding:10px 18px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child{text-align:left}
+thead th{font-size:.85rem;color:var(--muted);font-weight:500}
+tbody tr:last-child td{border-bottom:0}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+
+/* flow */
+.flow{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;counter-reset:step}
+.flow li{counter-increment:step;border-top:3px solid var(--accent);padding-top:14px}
+.flow li::before{content:"STEP " counter(step);display:block;font-size:.75rem;letter-spacing:.14em;color:var(--accent);font-weight:700}
+.flow b{display:block;font-size:1.05rem;margin:4px 0}
+.flow span{font-size:.9rem;color:var(--muted)}
+
+/* company */
+.company{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+dl{margin:0;display:grid;grid-template-columns:7em 1fr;border-top:1px solid var(--line)}
+dt,dd{margin:0;padding:12px 4px;border-bottom:1px solid var(--line)}
+dt{color:var(--muted);font-size:.92rem}
+dd{min-width:0;font-variant-numeric:tabular-nums}
+form{display:grid;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px}
+label{display:grid;gap:4px;font-size:.9rem;font-weight:500}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 12px;width:100%}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+form button{font:inherit;font-weight:700;background:var(--accent);color:var(--on-accent);border:0;border-radius:8px;padding:12px;cursor:pointer}
+.contact-card{display:grid;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px}
+.contact-card p{margin:0}
+.contact-card .big{font-size:1.5rem;font-weight:900;font-variant-numeric:tabular-nums;user-select:all}
+.contact-card .small{font-size:.88rem;color:var(--muted)}
+.form-msg{font-size:.9rem;color:var(--accent);margin:0}
+
+.works-link{display:inline-block;margin-top:22px;font-weight:700;color:var(--accent);text-decoration:none;border-bottom:2px solid var(--accent-soft);padding-bottom:2px}
+.works-link:hover{border-bottom-color:var(--accent)}
+
+footer{border-top:1px solid var(--line);padding-block:28px;font-size:.85rem;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:860px){
+  .hero .wrap,.company{grid-template-columns:1fr}
+  .services,.price-grid{grid-template-columns:1fr 1fr}
+  .flow{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .services,.price-grid,.flow{grid-template-columns:1fr}
+  .top nav{display:none}
+  section{padding-block:48px}
+  dl{grid-template-columns:5.5em 1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">三重現状回復サービス</div>
+    <nav aria-label="ページ内リンク">
+      <a href="#service">対応工事</a><a href="works.html">施工事例</a><a href="#price">料金の目安</a><a href="#flow">ご依頼の流れ</a><a href="#company">会社概要</a><a href="#contact">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1><small>賃貸の原状回復・内装リフォーム</small>三重現状回復<br>サービス</h1>
+        <p class="lead">賃貸アパート・賃貸マンションの退去後のお部屋を、<strong>次の入居者を迎えられる状態に戻します。</strong>やれることはオールマイティー。クロスも床も水回りも畳も、まとめてお任せください。</p>
+        <ul class="tags">
+          <li>伊賀市・三重県全域</li><li>オーナー様・管理会社様</li><li>見積り無料</li>
+        </ul>
+      </div>
+      <div class="call">
+        <span class="label">お電話でのご相談</span>
+        <a class="tel" id="tel" href="tel:09050019172">090-5001-9172</a>
+        <span class="sub">いつでもお電話ください。<br>FAX 050-3588-2494</span>
+        <button type="button" id="copyTel">番号をコピー</button>
+      </div>
+    </div>
+  </div>
+
+  <section id="service">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">SERVICE</span><h2>対応できる工事</h2></div>
+      <div class="services">
+        <div class="svc">
+          <h3><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H3z"/><path d="M9 20v-6h6v6"/></svg>原状回復工事</h3>
+          <p>退去後のお部屋を一式で。傷・汚れ・劣化をまとめて確認し、必要な工事を組み合わせて元の状態に戻します。</p>
+        </div>
+        <div class="svc">
+          <h3><svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 7 6 11a6 6 0 01-12 0c0-4 3-7 6-11z"/></svg>水回りの工事</h3>
+          <p>キッチン、浴室、トイレ、洗面所。設備の交換や修理、パッキン・水栓まわりの不具合にも対応します。</p>
+        </div>
+        <div class="svc">
+          <h3><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 12h16M12 3v9"/></svg>畳の表替え</h3>
+          <p>日焼けや擦れた畳を新しい畳表に。和室のある物件も、入居前に気持ちよく整えます。</p>
+        </div>
+        <div class="svc">
+          <h3><svg viewBox="0 0 24 24"><path d="M4 20h16M7 20V9l5-5 5 5v11"/><path d="M10 14h4"/></svg>クロス張替え・クロスケア</h3>
+          <p>壁紙の張替えのほか、張り替えずに再生させるクロスケアも。凸凹模様を残した自然な仕上がりで、ゴミも出ません。</p>
+        </div>
+        <div class="svc">
+          <h3><svg viewBox="0 0 24 24"><path d="M3 17h18M3 13h18M8 13v4M15 13v4"/><path d="M6 9l3-3 3 3"/></svg>床の補修</h3>
+          <p>フローリングの傷・へこみを補修。張替えよりも費用と工期をおさえられます。</p>
+        </div>
+        <div class="svc">
+          <h3><svg viewBox="0 0 24 24"><path d="M5 21l5-5M14 4l6 6-8 8-6-6z"/></svg>ハウスクリーニング</h3>
+          <p>コンロの焦げ付きや油汚れ、浴槽・鏡・便器、窓とサッシ、エアコン内部、換気扇、排水溝まで。</p>
+        </div>
+      </div>
+      <p class="allround">クリーニングも補修も張替えも、窓口はひとつ。業者を何社も手配する手間はかかりません。</p>
+      <a class="works-link" href="works.html">施工事例のビフォー・アフターを見る <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section id="price">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">PRICE</span><h2>料金の目安</h2></div>
+      <div class="price-grid">
+        <div class="p-item"><div class="name">まるごとクリーニング</div><div class="yen">20,000<small>円〜</small></div></div>
+        <div class="p-item"><div class="name">床の傷・へこみ補修</div><div class="yen">8,000<small>円〜</small></div></div>
+        <div class="p-item"><div class="name">クロスケア</div><div class="yen">600<small>円〜 / 1㎡</small></div></div>
+      </div>
+      <div class="table-box">
+        <table>
+          <caption>クロスケア 間取り別の目安</caption>
+          <thead><tr><th scope="col">間取り</th><th scope="col">壁のみ</th><th scope="col">壁・天井</th></tr></thead>
+          <tbody>
+            <tr><td>6帖のお部屋</td><td>10,000円〜</td><td>13,000円〜</td></tr>
+            <tr><td>8帖のお部屋</td><td>13,000円〜</td><td>17,000円〜</td></tr>
+            <tr><td>ワンルーム・1K</td><td>19,000円〜</td><td>25,000円〜</td></tr>
+            <tr><td>1K・1DK</td><td>23,000円〜</td><td>29,000円〜</td></tr>
+            <tr><td>1LDK・2DK</td><td>35,000円〜</td><td>44,000円〜</td></tr>
+            <tr><td>2LDK</td><td>47,000円〜</td><td>59,000円〜</td></tr>
+            <tr><td>3LDK</td><td>71,000円〜</td><td>89,000円〜</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">お部屋の状態により金額は変わります。現地を確認してから正式なお見積りをお出しします。</p>
+    </div>
+  </section>
+
+  <section id="flow">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">FLOW</span><h2>ご依頼の流れ</h2></div>
+      <ol class="flow">
+        <li><b>ご連絡</b><span>お電話・FAX・フォームから。物件の場所と間取りをお知らせください。</span></li>
+        <li><b>現地確認</b><span>お部屋を拝見して、必要な工事を洗い出します。</span></li>
+        <li><b>お見積り</b><span>工事ごとの内訳つきでお出しします。</span></li>
+        <li><b>施工</b><span>クリーニング・補修・張替えをまとめて進めます。</span></li>
+        <li><b>完了確認</b><span>仕上がりを一緒にご確認いただき、お引き渡し。</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="company">
+    <div class="wrap company">
+      <div>
+        <div class="sec-head"><span class="eyebrow">COMPANY</span><h2>会社概要</h2></div>
+        <dl>
+          <dt>屋号</dt><dd>三重現状回復サービス</dd>
+          <dt>代表</dt><dd>権蛇 日出輝</dd>
+          <dt>所在地</dt><dd>〒518-1421<br>三重県伊賀市真泥3297</dd>
+          <dt>電話</dt><dd>090-5001-9172</dd>
+          <dt>FAX</dt><dd>050-3588-2494</dd>
+          <dt>業務内容</dt><dd>賃貸物件の原状回復工事、内装リフォーム、水回り工事、畳の表替え、クロス張替え・クロスケア、床補修、ハウスクリーニング</dd>
+          <dt>対応エリア</dt><dd>伊賀市および三重県全域（その他の地域もご相談ください）</dd>
+        </dl>
+      </div>
+      <div id="contact">
+        <div class="sec-head"><span class="eyebrow">CONTACT</span><h2>お問い合わせ</h2></div>
+        <div class="contact-card">
+          <p>工事のご依頼・お見積りのご相談は、お電話またはFAXでお気軽にどうぞ。物件の場所と間取り、気になっている箇所をお知らせください。</p>
+          <dl>
+            <dt>電話</dt><dd class="big">090-5001-9172</dd>
+            <dt>FAX</dt><dd class="big">050-3588-2494</dd>
+          </dl>
+          <p class="small">いつでもお電話ください。出られないときは折り返しご連絡します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>三重現状回復サービス｜三重県伊賀市真泥3297</span><span>TEL 090-5001-9172</span></div>
+</footer>
+
+<script>
+document.getElementById('copyTel').addEventListener('click', function(){
+  var b=this, t='090-5001-9172';
+  var done=function(){b.textContent='コピーしました';setTimeout(function(){b.textContent='番号をコピー'},2000)};
+  try{navigator.clipboard.writeText(t).then(done,function(){selectTel()})}catch(e){selectTel()}
+  function selectTel(){var r=document.createRange();r.selectNodeContents(document.getElementById('tel'));var s=getSelection();s.removeAllRanges();s.addRange(r)}
+});
+</script>
+</body>
+</html>
