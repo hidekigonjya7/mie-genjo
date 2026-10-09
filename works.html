@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>施工事例｜三重現状回復サービス</title>
+<title>施工写真｜三重現状回復サービス</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Zen+Antique+Soft&display=swap">
@@ -83,6 +83,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .arrow{width:auto;height:30px;transform:rotate(90deg)}
   .top nav{font-size:.85rem;gap:14px}
 }
+
+/* ページ切替タブ */
+.tabs{display:flex;gap:4px;padding-top:2px}
+.tabs a{flex:1;max-width:220px;text-align:center;padding:9px 12px;font-weight:700;font-size:.95rem;text-decoration:none;color:var(--muted);border-bottom:3px solid transparent}
+.tabs a:hover{color:var(--accent)}
+.tabs a[aria-current="page"]{color:var(--accent);border-bottom-color:var(--accent)}
 </style>
 </head>
 <body>
@@ -90,16 +96,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <div class="wrap">
     <a class="brand" href="index.html">三重現状回復サービス</a>
     <nav aria-label="サイト内リンク">
-      <a href="index.html">トップ</a><a href="works.html" aria-current="page">施工事例</a><a href="index.html#price">料金の目安</a><a href="index.html#contact">お問い合わせ</a>
+      <a href="index.html">トップ</a><a href="works.html" aria-current="page">施工写真</a><a href="index.html#price">料金の目安</a><a href="index.html#contact">お問い合わせ</a>
     </nav>
   </div>
+
+  <div class="wrap tabs" role="navigation" aria-label="ページ切替"><a href="index.html">トップページ</a><a href="works.html" aria-current="page">施工写真</a></div>
 </header>
 
 <main>
   <div class="intro">
     <div class="wrap">
       <span class="eyebrow">WORKS</span>
-      <h1>施工事例</h1>
+      <h1>施工写真</h1>
       <p>実際に手がけたお部屋の、工事前と工事後です。退去後の状態からどこまで戻せるか、写真でご確認ください。</p>
       <div class="filters" role="group" aria-label="工事の種類で絞り込む">
         <button type="button" aria-pressed="true" data-f="all">すべて</button>
@@ -147,7 +155,7 @@ box.innerHTML = CASES.map(function(c){
     + '<div class="meta"><h2>'+c.title+sample+'</h2>'
     + '<ul class="facts"><li><b>場所</b>'+c.area+'</li><li><b>間取り</b>'+c.plan+'</li><li><b>工期</b>'+c.days+'</li><li><b>工事内容</b>'+c.work+'</li></ul>'
     + '<p>'+c.text+'</p></div></article>';
-}).join('') || '<p class="empty">施工事例の写真は準備中です。工事前・工事後の写真を順次掲載していきます。</p>';
+}).join('') || '<p class="empty">施工写真の写真は準備中です。工事前・工事後の写真を順次掲載していきます。</p>';
 
 document.querySelectorAll('.filters button').forEach(function(btn){
   btn.addEventListener('click', function(){
